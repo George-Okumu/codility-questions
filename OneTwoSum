@@ -1,0 +1,33 @@
+function solution(S) {
+    // Implement your solution here
+    let newS = S.split(/([+\-*\/])/);
+
+    let a = newS.map((v) => {
+        if (v === "one") {
+            return 1;
+        } else if (v === "two") {
+            return 2;
+        }
+        return v;
+    })
+
+    if (a.length === 1) {
+        return a[0];
+    } else {
+        let total = a[0];
+        let op = "+";
+        for (let i = 1; i < a.length; i++) {
+            if (typeof (a[i]) === 'number') {
+                if (op === "-") {
+                    total -= a[i]
+                } else if (op === "+") {
+                    total += a[i];
+                }
+            } else {
+                op = a[i];
+            }
+        }
+        return total;
+
+    }
+}
